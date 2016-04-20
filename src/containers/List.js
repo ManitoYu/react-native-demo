@@ -9,6 +9,8 @@ import React, {
   TextInput
 } from 'react-native'
 
+import NavigationBar from '../components/NavigationBar'
+
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#eee',
@@ -48,11 +50,12 @@ class App extends Component {
   }
 
   render() {
-    const { users, addUser } = this.props
+    const { users, addUser, navigator } = this.props
     const { user } = this.state
 
     return (
       <View style={styles.container}>
+        <NavigationBar navigator={navigator} />
         <View style={styles.card}>
           <View style={styles.header}>
             <TextInput
