@@ -7,7 +7,7 @@ import React, {
 } from 'react-native'
 
 const styles = {
-  NavigationBar: {
+  navigationBar: {
     height: 60,
     backgroundColor: '#3F51B5',
     flex: 1,
@@ -27,7 +27,7 @@ export default class NavigationBar extends Component {
   render() {
     return (
       <View>
-        <View style={styles.NavigationBar}>
+        <View style={styles.navigationBar}>
           <TouchableOpacity onPress={this.goBack.bind(this)}>
             <Text style={styles.backButtonText}>返回</Text>
           </TouchableOpacity>

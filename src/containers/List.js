@@ -9,7 +9,7 @@ import React, {
   TextInput
 } from 'react-native'
 
-import NavigationBar from '../components/NavigationBar'
+import { NavigationBar } from '../components'
 
 const styles = StyleSheet.create({
   container: {
