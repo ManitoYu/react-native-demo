@@ -4,6 +4,7 @@ import React, {
   Navigator,
   Text,
   ListView,
+  Image,
   DrawerLayoutAndroid
 } from 'react-native'
 import { connect } from 'react-redux'
@@ -36,9 +37,23 @@ class Home extends Component {
         drawerWidth={300}
         drawerPosition={DrawerLayoutAndroid.positions.Left}
         renderNavigationView={() => navigationView}>
-        <View>
+        <View style={{ backgroundColor: '#EAEAEA', flex: 1 }}>
           <NavigationBar navigator={navigator} />
-          <ListView enableEmptySections={true} dataSource={ds.cloneWithRows(users)} renderRow={user => <Card><Text>{user}</Text></Card>} />
+          <Text style={{ margin: 16, color: '#737373', fontWeight: 'bold' }}>Today</Text>
+          <ListView
+            enableEmptySections={true}
+            dataSource={ds.cloneWithRows(users)}
+            renderRow={user =>
+              <View style={{ padding: 16, backgroundColor: '#fff', flex: 1, flexDirection: 'row' }}>
+                <Image
+                  style={{ width: 40, height: 40, borderRadius: 20, marginRight: 16 }}
+                  source={{ uri: user.avatar }} />
+                <View>
+                  <Text>{user.name}</Text>
+                </View>
+              </View>
+            }
+          />
         </View>
       </DrawerLayoutAndroid>
     )
