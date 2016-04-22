@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux'
 import { GET_USERS, ADD_USER } from '../actions'
+import _ from 'lodash'
 
 const users = (state = [], action) => {
   switch (action.type) {

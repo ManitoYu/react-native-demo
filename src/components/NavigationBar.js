@@ -6,6 +6,8 @@ import React, {
   TouchableOpacity
 } from 'react-native'
 
+import emitter from '../utils/emitter'
+
 const Icon = require('react-native-vector-icons/MaterialIcons')
 
 const styles = {
@@ -31,16 +33,29 @@ const styles = {
 }
 
 export default class NavigationBar extends Component {
+  openMenu() {
+    emitter.emit('OPEN_DRAWER')
+  }
   goBack() {
+    emitter.emit('CLOSE_DRAWER')
     this.props.navigator.pop()
   }
   render() {
     return (
       <View>
         <View style={styles.navigationBar}>
-          <TouchableOpacity onPress={this.goBack.bind(this)} style={styles.navButton}>
-            <Icon name="menu" size={28} color="#fff" />
-          </TouchableOpacity>
+          {
+            this.props.navigator.getCurrentRoutes().length == 1
+              ?
+                <TouchableOpacity onPress={this.openMenu.bind(this)} style={styles.navButton}>
+                  <Icon name="menu" size={28} color="#fff" />
+                </TouchableOpacity>
+              :
+                <TouchableOpacity onPress={this.goBack.bind(this)} style={styles.navButton}>
+                  <Icon name="arrow-back" size={28} color="#fff" />
+                </TouchableOpacity>
+          }
+
           <Text style={styles.navText}>InBox</Text>
           <View style={{ position: 'absolute', right: 16, top: 16 }}>
             <Icon name="search" size={28} color="#fff" />

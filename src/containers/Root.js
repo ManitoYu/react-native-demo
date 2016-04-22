@@ -12,7 +12,7 @@ export default class Root extends Component {
       <Provider store={store}>
         <Navigator
           initialRoute={{ name: 'Home', component: Home }}
-          configureScene={route => Navigator.SceneConfigs.VerticalDownSwipeJump}
+          configureScene={route => Navigator.SceneConfigs.FloatFromRight}
           renderScene={(route, navigator) => {
             let Component = route.component;
             return <Component {...route.params} navigator={navigator} />

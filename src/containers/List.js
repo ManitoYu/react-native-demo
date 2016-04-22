@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { getUsers, addUser} from '../actions'
+import { getUsers, addUser } from '../actions'
 
 import React, {
   Component,
@@ -61,12 +61,12 @@ class App extends Component {
             <TextInput
               value={user}
               onChangeText={user => this.setState({ user })}
-              onSubmitEditing={() => { if (! user) return; addUser(user); this.setState({ user: '' }) }} />
+              onSubmitEditing={() => { if (! user) return; addUser({ name: user }); this.setState({ user: '' }) }} />
           </View>
           <View style={styles.body}>
           {
             users.length
-            ? users.map((user, idx) => <View key={idx} style={styles.itemWrapper}><Text style={styles.item}>{user}</Text></View>)
+            ? users.map((user, idx) => <View key={idx} style={styles.itemWrapper}><Text style={styles.item}>{user.name}</Text></View>)
             : <Text style={styles.item}>暂时没有相关信息</Text>
           }
           </View>
